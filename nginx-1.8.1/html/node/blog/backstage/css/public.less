@@ -1,0 +1,710 @@
+//盒子阴影
+// @right_left 右正左负
+// @bottom_top 上正下负
+// @box_blur 阴影距离
+// @box 阴影大小
+// @box_color 阴影颜色
+.boxshadow(...) {
+    box-shadow: @arguments;
+    -moz-box-shadow: @arguments;
+    -webkit-box-shadow: @arguments;
+}
+
+//文字阴影
+// @right_left1 右边阴影为正数 左边负数
+// @bottom_top1 下边阴影为正数 上边负数
+// @text  阴影大小
+// @text_color 阴影颜色
+.textshadow(@right_left1, @bottom_top1, @text, @text_color) {
+    -webkit-text-shadow: @arguments;
+    -moz-text-shadow: @arguments;
+    -o-text-shadow: @arguments;
+    text-shadow: @arguments;
+}
+
+//css渐变
+//线性渐变
+.linegradient(...) {
+    background: -webkit-linear-gradient(@arguments); // Safari 5.1 - 6.0 
+    background: -o-linear-gradient(@arguments); // Opera 11.1 - 12.0 
+    background: -moz-linear-gradient(@arguments); // 标准的语法 
+    background: linear-gradient(@arguments);
+}
+
+//重复线性渐变
+.repeat-linegradient(...) {
+    // Safari 5.1 - 6.0 
+    background: -webkit-repeating-linear-gradient(@arguments); // Opera 11.1 - 12.0 
+    background: -o-repeating-linear-gradient(@arguments); // Firefox 3.6 - 15 
+    background: -moz-repeating-linear-gradient(@arguments); // 标准的语法 
+    background: repeating-linear-gradient(@arguments);
+}
+
+//径向渐变
+.radialgradient(...) {
+    background: -webkit-radial-gradient(@arguments); // Safari 5.1 - 6.0 
+    background: -o-radial-gradient(@arguments); // Opera 11.6 - 12.0 
+    background: -moz-radial-gradient(@arguments); // Firefox 3.6 - 15 
+    background: radial-gradient(@arguments); // 标准的语法 
+}
+
+//重复径向渐变
+.repeat-radialgradient(...) {
+    // Safari 5.1 - 6.0 
+    background: -webkit-repeating-radial-gradient(@arguments); // Opera 11.6 - 12.0 
+    background: -o-repeating-radial-gradient(@arguments); // Firefox 3.6 - 15 
+    background: -moz-repeating-radial-gradient(@arguments); // 标准的语法 
+    background: repeating-radial-gradient(@arguments);
+}
+
+//旋转角度
+//@r 旋转度数
+.rotate(@r) {
+    transform: rotate(@r);
+    -webkit-transform: rotate(@r);
+    -moz-transform: rotate(@r);
+    -o-transform: rotate(@r);
+}
+
+// 放大缩小
+// @x 横向缩放比例
+// @y 纵向缩放比例
+// 
+.scale(@x :1.2, @y :1.2) {
+    transform: scale(@x, @y);
+    -webkit-transform: scale(@x, @y);
+    -moz-transform: scale(@x, @y);
+    -o-transform: scale(@x, @y);
+    -ms-transform: scale(@x, @y);
+}
+
+//--------------------文字-------------------//
+//文字大小
+.fz(@fz) {
+    font-size: @fz;
+}
+
+//文字大小与行高
+.fz(@fz, @lh) {
+    font-size: @fz;
+    line-height: @lh;
+}
+
+// 字体颜色, 包括链接与非链接
+.color(@color) {
+    color: @color;
+}
+
+//字体颜色与hover
+.color(@color, @hcolor) {
+    color: @color;
+    &:hover {
+        color: @hcolor;
+    }
+}
+
+// 禁止换行, 文本溢出省略号显示 (一行)
+.ellipsis() {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+//--------------flex布局---------------//
+//水平垂直居中
+.flex(center) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+//垂直居中
+.flex(colcenter){
+    display: flex;
+    align-items: center;
+}
+//父容器换行不缩放
+.flex(@d, @x, @y) {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: @d;
+    justify-content: @x;
+    align-items: @y;
+}
+
+//---------------背景-----------------//
+.bgcolor(@color) {
+    background-color: @color;
+}
+
+//背景图
+.bgimg(@url,@r) {
+    background: url(@url) @r;
+}
+//雪碧图
+.xuebi(@w, @h, @url, @bw, @bh, @x, @y) {
+    .size(@w, @h);
+    .bgimg(@url);
+    background-size: @bw @bh;
+    background-position: @x @y;
+}
+//背景图大小
+.bgsize(@w,@h){
+    background-size: @w @h;
+}
+//--------------border----------------//
+//全边
+.border(@w, @xs, @color) {
+    border: @w @xs @color;
+}
+
+//左
+.borderleft(@w, @xs, @color) {
+    border-left: @w @xs @color;
+}
+
+//上
+.bordertop(@w, @xs, @color) {
+    border-top: @w @xs @color;
+}
+
+//右
+.borderright(@w, @xs, @color) {
+    border-right: @w @xs @color;
+}
+
+//下
+.borderbottom(@w, @xs, @color) {
+    border-bottom: @w @xs @color;
+}
+
+//圆角
+.round(@radius) {
+    border-radius: @radius;
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+}
+
+//-----------盒模型------------//
+//盒子大小
+.size(@w: 1px, @h: 1px) {
+    width: @w;
+    height: @h;
+}
+
+//绝对定位
+.absolute() {
+    position: absolute;
+}
+
+//相对定位
+.relative() {
+    position: relative;
+}
+
+//固定定位
+.fixed() {
+    position: fixed;
+}
+
+//设置为块级元素
+.borderbox() {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box
+}
+//设置为flex
+.flex(){
+    display: flex;
+}
+//设置为行内块级元素
+.inlinebox() {
+    box-sizing: inline-box;
+    -webkit-box-sizing: inline-box;
+    -moz-box-sizing: inline-box;
+}
+//设置为块级元素
+.block(){
+    display: block;
+}
+
+//margin
+.m(@t @r @b @l){
+    margin: @t @r @b @l;
+}
+//上
+.mt(@size) {
+    margin-top: @size;
+}
+
+//右
+.mr(@size) {
+    margin-right: @size;
+}
+
+//下
+.mb(@size) {
+    margin-bottom: @size;
+}
+
+//左
+.ml(@size) {
+    margin-left: @size;
+}
+
+//上下
+.mtb(@t, @b) {
+    margin-top: @t;
+    margin-bottom: @b;
+}
+
+//左右
+.mlr(@l, @r) {
+    margin-left: @l;
+    margin-right: @r;
+}
+//上右
+.mtr(@t,@r){
+    margin: @t @r;
+}
+//padding
+.p(@t @r @b @l){
+    padding: @t @r @b @l;
+}
+//上
+.pt(@size) {
+    padding-top: @size;
+}
+
+//右
+.pr(@size) {
+    padding-right: @size;
+}
+
+//下
+.pb(@size) {
+    padding-bottom: @size;
+}
+
+//左
+.pl(@size) {
+    padding-left: @size;
+}
+
+//上下
+.ptb(@t, @b) {
+    padding-top: @t;
+    padding-bottom: @b;
+}
+
+//左右
+.plr(@l, @r) {
+    padding-left: @l;
+    padding-right: @r;
+}
+//上右
+.ptr(@t,@r){
+    padding: @t @r;
+}
+//------------------------------------- ├ 动效 ┆ └------------------------------------/
+
+
+
+// 链接默认无下划线，hover后有下划线的样式
+
+.hover-link() {
+
+text-decoration: none;
+
+&:hover { text-decoration: underline; }
+
+}
+
+
+
+// 将链接变成默认的文字样式
+
+.unstyled-link() {
+
+color: inherit;
+
+cursor: inherit;
+
+text-decoration: inherit;
+
+&:active, &:focus { outline: none; }
+
+}
+
+
+
+// 盒子阴影
+
+// box-shadow: 水平阴影的位置, 垂直阴影的位置, 模糊距离, 阴影的大小, 阴影的颜色, 阴影开始方向（默认是从里往外，设置inset就是从外往里）;
+
+// box-shadow: h-shadow v-shadow blur spread color inset;
+
+.box-shadow() {
+
+box-shadow: 0px 14px 26px 0px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+// 盒子 Hover
+
+.box-hover() {
+
+// box-shadow: 0px 1px 2px 0px rgba(84, 107, 107, .4);
+
+transition: all .2s linear;
+
+&:hover {
+
+box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+
+transform: translate3d(0, -2px, 0);
+
+}
+
+}
+
+
+
+.box-hover2() {
+
+transition: transform .5s ease;
+
+&:hover {
+
+transform: translateX(10px);
+
+}
+
+}
+
+//------------------------------------- ├ 功能 ┆ └------------------------------------/
+
+
+
+// 浮动, 兼容 IE6
+
+.fl() { float: left; *display: inline; _display:inline; }
+
+.fr() { float: right; *display: inline; _display:inline; }
+
+
+
+// 清除浮动
+
+.clearfix() {
+
+*zoom: 1;
+
+&:after { display: block; clear: both; content: ''; visibility: hidden; height: 0; }
+
+}
+
+.clearfix(table) {
+
+*zoom: 1;
+
+&:before, &:after { content: " "; display: table; clear: both; }
+
+}
+
+
+
+// 禁止文本被选择
+
+.user-select() { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
+
+
+// 隐藏鼠标手势
+
+.hide-cursor() { cursor: none !important; }
+
+
+
+// 鼠标禁用样式，但仍然可以触发事件
+
+// 
+
+
+
+.disabled() { cursor: not-allowed; }
+
+
+
+// 禁用元素事件
+
+// 1. 阻止任何点击动作的执行
+
+// 2. 使链接显示为默认光标(cursor:default)
+
+// 3. 阻止触发hover和active状态
+
+// 4. 阻止JavaScript点击事件的触发
+
+.pointer-events() { pointer-events: none; }
+
+
+
+// 模糊
+
+.blur(@blur: 10px) {
+
+filter: blur(@blur);
+
+-webkit-filter: blur(@blur);
+
+-moz-filter: blur(@blur);
+
+-o-filter: blur(@blur);
+
+-ms-filter: blur(@blur);
+
+filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='@{blur}');
+
+*zoom: 1;
+
+}
+
+
+
+// 透明度, 兼容 IE8
+
+.opacity(@opacity: 20) { opacity: @opacity / 100; filter: alpha(opacity=@opacity); }
+
+
+
+// 用伪类来显示打印时 a 标签的链接
+
+.print-link() {
+
+@media print {
+
+a[href]:after { content: " (" attr(href) ") "; }
+
+}
+
+}
+
+
+
+// 隔行换色
+
+.zebra-lists(odd, @color) {
+
+&.odd {
+
+>li:nth-child(odd) { background-color: @color; }
+
+}
+
+}
+
+.zebra-lists(even, @color) {
+
+&.even {
+
+>li:nth-child(even) { background: green; }
+
+}
+
+}
+
+
+
+// 首字下沉
+
+.first-letter(@font-size: 6em) {
+
+&::first-letter{
+
+float: left;
+
+line-height: 1;
+
+font-size: @font-size;
+
+}
+
+}
+
+
+
+// 特殊标记段落第一行
+
+.first-line() {
+
+&::first-line{
+
+color: red
+
+}
+
+}
+
+
+
+// 美化选中文本
+
+.beauty-select() {
+
+&::selection{
+
+color: #fff;
+
+background-color: #6bc30d;
+
+text-shadow: none;
+
+}
+
+}
+
+
+
+// 美化占位符 placeholder 样式
+
+.beauty-placeholder(@fz, @color: #999, @align: left) {
+
+&:-moz-placeholder { font-size: @fz; color: @color; text-align: @align; }
+
+&:-ms-input-placeholder { font-size: @fz; color: @color; text-align: @align; }
+
+&::-webkit-input-placeholder { font-size: @fz; color: @color; text-align: @align; }
+
+}
+
+
+
+// 美化占位符 placeholder 样式（自定义属性和值）
+
+.beauty-placeholder(custom, @property, @value) {
+
+&:-moz-placeholder { @{property}: @value; }
+
+&:-ms-input-placeholder { @{property}: @value; }
+
+&::-webkit-input-placeholder { @{property}: @value; }
+
+}
+
+//------------------------------------- ├ 图形 ┆ └------------------------------------/
+
+
+
+// 三角形
+
+.triangle(@width: 4px,@color: #000) {
+
+display: inline-block;
+
+width: 0;
+
+height: 0;
+
+vertical-align: middle;
+
+border-top: @width solid @color;
+
+border-left: @width solid transparent;
+
+border-right: @width solid transparent;
+
+}
+
+
+
+// 三角形箭头气泡效果, IE6-7 无表现
+
+.arrow(top, @w: 10px, @color, @x: 50%) {
+
+position: relative;
+
+&:before { position: absolute; bottom: 100%; left: @x; content: " "; height: 0; width: 0; pointer-events: none; border-style: solid; border-color: transparent; border-bottom-color: @color; border-width: unit(@w, px); @margin: -@w; margin-left: unit(@margin, px); }
+
+}
+
+.arrow(right, @w: 10px, @color, @y: 50%) {
+
+position: relative;
+
+&:before { position: absolute; left: 100%; top: @y; content: " "; height: 0; width: 0; pointer-events: none; border-style: solid; border-color: transparent; border-left-color: @color; border-width: unit(@w, px); @margin: -@w; margin-top: unit(@margin, px); }
+
+}
+
+.arrow(bottom, @w: 10px, @color, @x: 50%) {
+
+position: relative;
+
+&:before { position: absolute; top: 100%; left: @x; content: " "; height: 0; width: 0; pointer-events: none; border-style: solid; border-color: transparent; border-top-color: @color; border-width: unit(@w, px); @margin: -@w; margin-left: unit(@margin, px); }
+
+}
+
+.arrow(left, @w: 10px, @color, @y: 50%) {
+
+position: relative;
+
+&:before { position: absolute; right: 100%; top: @y; content: " "; height: 0; width: 0; pointer-events: none; border-style: solid; border-color: transparent; border-right-color: @color; border-width: unit(@w, px); @margin: -@w; margin-top: unit(@margin, px); }
+
+}
+
+
+
+// 三角形箭头气泡效果, 带边框
+
+.arrow-with-border(top, @w: 10px, @color, @border-w: 1px, @border-color, @x: 50%) {
+
+position: relative;
+
+&:before, &:after { bottom: 100%; left: @x; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-style: solid; border-color: transparent; }
+
+&:after { border-bottom-color: @color; border-width: unit(@w, px); @margin: -@w; margin-left: unit(@margin, px); }
+
+&:before { border-bottom-color: @border-color; @arrbo: @w+@border-w; border-width: unit(@arrbo, px); @margin-bo: -@arrbo; margin-left: unit(@margin-bo, px); }
+
+}
+
+.arrow-with-border(bottom, @w: 10px, @color, @border-w: 1px, @border-color, @x: 50%) {
+
+position: relative;
+
+&:before, &:after { top: 100%; left: @x; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-style: solid; border-color: transparent; }
+
+&:after { border-top-color: @color; border-width: unit(@w, px); @margin: -@w; margin-left: unit(@margin, px); }
+
+&:before { border-top-color: @border-color; @arrbo: @w+@border-w; border-width: unit(@arrbo, px); @margin-bo: -@arrbo; margin-left: unit(@margin-bo, px); }
+
+}
+
+.arrow-with-border(left, @w: 10px, @color, @border-w: 1px, @border-color, @y: 50%) {
+
+position: relative;
+
+&:before, &:after { top: @y; right: 100%; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-style: solid; border-color: transparent; }
+
+&:after { border-right-color: @color; border-width: unit(@w, px); @margin: -@w; margin-top: unit(@margin, px); }
+
+&:before { border-right-color: @border-color; @arrbo: @w+@border-w; border-width: unit(@arrbo, px); @margin-bo: -@arrbo; margin-top: unit(@margin-bo, px); }
+
+}
+
+.arrow-with-border(right, @w: 10px, @color, @border-w: 1px, @border-color, @y: 50%) {
+
+position: relative;
+
+&:before, &:after { top: @y; left: 100%; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-style: solid; border-color: transparent; }
+
+&:after { border-left-color: @color; border-width: unit(@w, px); @margin: -@w; margin-top: unit(@margin, px); }
+
+&:before { border-left-color: @border-color; @arrbo: @w+@border-w; border-width: unit(@arrbo, px); @margin-bo: -@arrbo; margin-top: unit(@margin-bo, px); }
+
+}
